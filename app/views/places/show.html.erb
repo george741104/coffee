@@ -1,0 +1,16 @@
+<h1><%=  @place.name %></h1>
+
+
+       <%= simple_format(@place.description) %>
+      <%= simple_format(@place.address) %>
+      <%= simple_format(@place.capacity) %>
+
+      <%if @place.is_open == true %>
+
+      <%= simple_format('It\'s open') %>
+      <%else%>
+      <%= simple_format('It\'s close') %>
+      <%end%>
+      <%= simple_format(@place.capacity) %>
+
+<div class="btn btn-default" > <%= link_to 'Back to Index', places_path %></div>

@@ -1,0 +1,7 @@
+<%= form_for @place, :url => place_path(@place), :class => "form" , :method => :patch do |p| %>
+
+
+ <%= render :partial => 'form', :locals => { :p => p } %>
+
+    <%= p.submit "Update", :class=>"btn btn-primary" %>
+<% end %>

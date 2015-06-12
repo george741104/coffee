@@ -1,0 +1,7 @@
+<h1>Add new place</h1>
+
+<%= form_for @place, :url =>places_path do |p| %>
+      <%= render :partial => 'form', :locals => { :p => p } %>
+      <%= p.submit "Add" %>
+      <%= link_to "Cancel", places_path , :class => "btn btn-default"%>
+<% end %>

@@ -1,0 +1,34 @@
+    <div class="form-group">
+          <%= p.label :name, "Name" %>
+          <%= p.text_field :name, :class=>"form-control" %>
+      </div>
+    <div class="form-group">
+                 <%= p.label :description, "Description" %>
+                 <%= p.text_area :description, :class=>"form-control" %>
+          </div>
+      <div class="form-group">
+                 <%= p.label :capacity, "Capacity" %>
+                 <%= p.text_area :capacity, :class=>"form-control" %>
+          </div>
+          <div class="form-group">
+                 <%= p.label :address, "Address" %>
+                 <%= p.text_area :address, :class=>"form-control" %>
+          </div>
+
+          <div class="form-group">
+                      <%= p.select (:is_open) do %>
+                        <% [['open',1], ['close', 2]] .each do |c| -%>
+                              <%= content_tag(:option,c.first, value:c.last) %>
+
+                              <%end%>
+                   <%end%>
+            </div>
+
+ <!-- error msgs template -->
+    <% if @place.errors.any? %>
+      <ul>
+      <% @place.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+<% end %>

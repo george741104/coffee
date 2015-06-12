@@ -6,6 +6,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :capacity
       t.boolean :is_open
 
+
       t.timestamps null: false
     end
   end
