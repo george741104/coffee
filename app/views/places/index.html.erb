@@ -1,19 +1,34 @@
 <h1 class="well">Places List </h1>
+
+<%= form_for @place do |p| %>
+
+      <%= render :partial => 'form', :locals => { :p => p } %>
+      <%= p.submit "Add", :class => "btn btn-default"%>
+      <%= link_to "Cancel", places_path , :class => "btn btn-default"%>
+<% end %>
+
 <div class="table-responsive">
 
       <table class="table table-striped table-hover">
+            <tr>
+                      <th> Name</th>
+                      <th>Open/Close</th>
+                      <th>More Operation</th>
+              </tr>
             <% @places.each do |p| %>
 
             <tr>
                   <td class="text-left">
                         <p><%=p.name %></p>
-                        <%if p.is_open == true%>
+                  </td>
+                  <td class="text-left">
+                         <%if p.is_open == true%>
                         <p ><%="Open" %></p>
                         <%else%>
                         <p ><%="Close"%></p>
                         <%end%>
                   </td>
-                  <td class="">
+                  <td class="text-left">
                         <%= link_to 'Info', place_path(p), :class => 'btn btn-primary' %>
                         <%= link_to 'Edit', edit_place_path(p), :class => 'btn btn-success' %>
                         <%= link_to 'Delete', place_path(p), :method =>'delete', :class => 'btn btn-danger' %>
@@ -22,7 +37,7 @@
             <% end %>
       </table>
 </div>
-<%= link_to 'New Place', new_place_path, :class => "btn btn-warning" %>
+<%= link_to 'New Place', places_path, :class => "btn btn-warning" %>
 <%= paginate @places %>
 
 

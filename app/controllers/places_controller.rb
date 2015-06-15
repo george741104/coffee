@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
 
 
       def index
+            @place = Place.new
             @places = Place.all
             @places = Place.page(params[:page]).per(30)
       end
@@ -15,10 +16,11 @@ class PlacesController < ApplicationController
               @place = Place.new(place_params)
 
               if @place.save
-                    redirect_to :action => :index
+                    redirect_to :url => places_path
                     flash[:notice] = "event was successfully created"
               else
-                  render :action => :new
+
+                  render :action => :index
             end
       end
       def show
